@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://chfq7u8brt5jy"]
+
+[ext_resource type="Texture2D" uid="uid://3xo2scl20lnf" path="res://assets/ui/banana_bg.png" id="1_63ykv"]
+[ext_resource type="Script" path="res://game.gd" id="1_slv2d"]
+[ext_resource type="PackedScene" uid="uid://ctqssw563fls0" path="res://banana.tscn" id="2_ijnkj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3fp0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhasl"]
+bg_color = Color(0.360784, 0.360784, 0.360784, 1)
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_slv2d")
+
+[node name="GamePanel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d3fp0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GamePanel"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GamePanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.07
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GamePanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SideBar" type="VBoxContainer" parent="GamePanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="BananaBG" type="TextureRect" parent="GamePanel/VBoxContainer/HBoxContainer/SideBar"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_63ykv")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PicturePanel" type="PanelContainer" parent="GamePanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhasl")
+
+[node name="MarginContainer" type="MarginContainer" parent="GamePanel/VBoxContainer/HBoxContainer/PicturePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="PictureRect" type="TextureRect" parent="GamePanel/VBoxContainer/HBoxContainer/PicturePanel/MarginContainer"]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BottomBar" type="HBoxContainer" parent="GamePanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+alignment = 1
+
+[node name="Button" type="Button" parent="GamePanel/VBoxContainer/BottomBar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Banana Scaled!!"
+
+[node name="Banana" parent="." instance=ExtResource("2_ijnkj")]
+layout_mode = 2
+offset_left = 48.0
+offset_top = 96.0
+offset_right = 176.0
+offset_bottom = 224.0
+
+[connection signal="button_up" from="GamePanel/VBoxContainer/BottomBar/Button" to="." method="_on_button_button_up"]
