@@ -3,37 +3,72 @@
 
 extends Control
 
+# array of scale handle nodes
 @onready var handles = [$TopLeft, $TopRight, $BottomLeft, $BottomRight]
 
+# minimum size of the banana
 const MINIMUM_SIZE = Vector2(20,20)
 
+# bool for if banana is currently being dragged
 var dragging:bool = false
 
+# scale handle vars
 var draghandle = null
+var min_handle_pos:Vector2
+var max_handle_pos:Vector2
 var prev_mouse_pos = Vector2.ZERO
 
+# on ready connect signals
 func _ready():
 	for i in handles:
 		i.button_down.connect(_on_handle_clicked.bind(i))
-		i.button_up.connect(_on_handle_released.bind(i))
+		i.button_up.connect(_on_handle_released)
 
-func _on_handle_clicked(button):
-	draghandle = button
+# when a handle is clicked it becomes the target handle for dragging
+func _on_handle_clicked(handle):
+	draghandle = handle
+	var handle_pos = draghandle.position
+	
+	# calculate the minimum and maximum position of the handle
+	if draghandle.position.x < draghandle.share_y.position.x:
+		max_handle_pos.x = draghandle.share_y.position.x - MINIMUM_SIZE.x
+		min_handle_pos.x = 0
+	else:
+		min_handle_pos.x = draghandle.share_y.position.x + MINIMUM_SIZE.x
+		max_handle_pos.x = get_viewport().size.x
+	
+	if draghandle.position.y < draghandle.share_x.position.y:
+		max_handle_pos.y = draghandle.share_x.position.y - MINIMUM_SIZE.y
+		min_handle_pos.y = 0
+	else:
+		min_handle_pos.y = draghandle.share_x.position.y + MINIMUM_SIZE.y
+		max_handle_pos.y = get_viewport().size.y
+	
 
-func _on_handle_released(button):
+# when a handle is released, stop dragging it
+func _on_handle_released():
 	draghandle = null
 
-func _input(event):
+# input function handles results of mouse movement
+func _input(_event):
+	var mouse_distance = get_local_mouse_position() - prev_mouse_pos
+	# move scale handle if dragging one
 	if draghandle:
-		move_handle(draghandle, draghandle.position + get_local_mouse_position() - prev_mouse_pos)
+		move_handle(draghandle, draghandle.position + mouse_distance)
 		adjust_scale()
-	if dragging:
-		$Button.position += get_local_mouse_position() - prev_mouse_pos
+	# move banana if being dragged
+	elif dragging:
+		$Button.position += mouse_distance
 		for i in handles:
-			i.position += get_local_mouse_position() - prev_mouse_pos
+			i.position += mouse_distance
 	prev_mouse_pos = get_local_mouse_position()
 
+# move scale handle to given position, limiting to minimum and maximum values
 func move_handle(handle, pos):
+	pos.x = max(min_handle_pos.x, pos.x)
+	pos.x = min(max_handle_pos.x, pos.x)
+	pos.y = max(min_handle_pos.y, pos.y)
+	pos.y = min(max_handle_pos.y, pos.y)
 	handle.move(pos)
 	
 
@@ -41,7 +76,6 @@ func move_handle(handle, pos):
 func adjust_scale():
 	$Button.position = $TopLeft.position + Vector2(8,8)
 	$Button.size = $BottomRight.position - $TopLeft.position
-
 
 func _on_button_button_down():
 	dragging = true
