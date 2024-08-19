@@ -59,9 +59,7 @@ func _input(_event):
 		adjust_scale()
 	# move banana if being dragged
 	elif dragging:
-		$Button.position += mouse_distance
-		for i in handles:
-			i.position += mouse_distance
+		move(mouse_distance)
 	prev_mouse_pos = get_local_mouse_position()
 
 # move scale handle to given position, limiting to minimum and maximum values
@@ -91,3 +89,8 @@ func _on_button_button_down():
 	dragging = true
 func _on_button_button_up():
 	dragging = false
+
+func move(pos:Vector2)->void:
+	$Button.position += pos
+	for i in handles:
+		i.position += pos
