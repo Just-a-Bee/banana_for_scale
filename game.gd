@@ -17,5 +17,4 @@ func next_picture():
 	picture_rect.texture = current_picture.texture
 
 func _on_button_button_up():
-	
 	next_picture()
