@@ -17,7 +17,7 @@ texture_normal = ExtResource("2_n2k3u")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="TopLeft" type="Button" parent="." node_paths=PackedStringArray("share_x", "share_y")]
+[node name="TopLeft" type="Button" parent="." node_paths=PackedStringArray("share_x", "share_y", "opposite")]
 layout_mode = 0
 offset_left = -8.0
 offset_top = -8.0
@@ -26,8 +26,9 @@ offset_bottom = 8.0
 script = ExtResource("3_i2a3l")
 share_x = NodePath("../BottomLeft")
 share_y = NodePath("../TopRight")
+opposite = NodePath("../BottomRight")
 
-[node name="TopRight" type="Button" parent="." node_paths=PackedStringArray("share_x", "share_y")]
+[node name="TopRight" type="Button" parent="." node_paths=PackedStringArray("share_x", "share_y", "opposite")]
 layout_mode = 0
 offset_left = 120.0
 offset_top = -8.0
@@ -36,8 +37,9 @@ offset_bottom = 8.0
 script = ExtResource("3_i2a3l")
 share_x = NodePath("../BottomRight")
 share_y = NodePath("../TopLeft")
+opposite = NodePath("../BottomLeft")
 
-[node name="BottomRight" type="Button" parent="." node_paths=PackedStringArray("share_x", "share_y")]
+[node name="BottomRight" type="Button" parent="." node_paths=PackedStringArray("share_x", "share_y", "opposite")]
 layout_mode = 0
 offset_left = 120.0
 offset_top = 120.0
@@ -46,8 +48,9 @@ offset_bottom = 136.0
 script = ExtResource("3_i2a3l")
 share_x = NodePath("../TopRight")
 share_y = NodePath("../BottomLeft")
+opposite = NodePath("../TopLeft")
 
-[node name="BottomLeft" type="Button" parent="." node_paths=PackedStringArray("share_x", "share_y")]
+[node name="BottomLeft" type="Button" parent="." node_paths=PackedStringArray("share_x", "share_y", "opposite")]
 layout_mode = 0
 offset_left = -8.0
 offset_top = 120.0
@@ -56,6 +59,7 @@ offset_bottom = 136.0
 script = ExtResource("3_i2a3l")
 share_x = NodePath("../TopLeft")
 share_y = NodePath("../BottomRight")
+opposite = NodePath("../TopRight")
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

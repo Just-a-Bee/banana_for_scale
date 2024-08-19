@@ -3,6 +3,7 @@ class_name Handle
 
 @export var share_x:Handle
 @export var share_y:Handle
+@export var opposite:Handle
 
 func move(new_position):
 	position = new_position

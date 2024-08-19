@@ -69,6 +69,12 @@ func move_handle(handle, pos):
 	pos.x = min(max_handle_pos.x, pos.x)
 	pos.y = max(min_handle_pos.y, pos.y)
 	pos.y = min(max_handle_pos.y, pos.y)
+	
+	var line_direction = (draghandle.position - draghandle.opposite.position).normalized()
+	var vector_to_object = pos - draghandle.position
+	var distance = line_direction.dot(vector_to_object)
+	pos = draghandle.position + distance * line_direction
+	
 	handle.move(pos)
 	
 
@@ -76,6 +82,9 @@ func move_handle(handle, pos):
 func adjust_scale():
 	$Button.position = $TopLeft.position + Vector2(8,8)
 	$Button.size = $BottomRight.position - $TopLeft.position
+
+func get_banana_size():
+	return $Button.size
 
 func _on_button_button_down():
 	dragging = true
