@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://chfq7u8brt5jy"]
 
 [ext_resource type="Texture2D" uid="uid://3xo2scl20lnf" path="res://assets/ui/banana_bg.png" id="1_63ykv"]
-[ext_resource type="Script" path="res://game.gd" id="1_slv2d"]
-[ext_resource type="PackedScene" uid="uid://ctqssw563fls0" path="res://banana.tscn" id="2_ijnkj"]
-[ext_resource type="Script" path="res://bar_graph.gd" id="3_u2not"]
+[ext_resource type="Script" path="res://main/game.gd" id="1_slv2d"]
+[ext_resource type="PackedScene" uid="uid://ctqssw563fls0" path="res://banana/banana.tscn" id="2_ijnkj"]
+[ext_resource type="Script" path="res://ui/bar_graph.gd" id="3_u2not"]
 [ext_resource type="Texture2D" uid="uid://dyj1uybkuaxvy" path="res://assets/ui/icons/banana_icon.png" id="4_vuuwc"]
 [ext_resource type="Texture2D" uid="uid://cxgfy1pk2qnxl" path="res://assets/ui/icons/check_icon.png" id="5_516ek"]
 [ext_resource type="Texture2D" uid="uid://cmhwksjnucue8" path="res://assets/ui/icons/x_icon.png" id="6_d2mj8"]

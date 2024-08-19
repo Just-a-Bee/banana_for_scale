@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bwh40sib1xqo2"]
 
-[ext_resource type="Script" path="res://boot_screen.gd" id="1_7fu50"]
+[ext_resource type="Script" path="res://ui/boot_screen.gd" id="1_7fu50"]
 
 [node name="BootScreen" type="Control"]
 layout_mode = 3
