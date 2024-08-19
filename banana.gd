@@ -2,6 +2,7 @@
 # Can be clicked and dragged, and has four scaling handles on the corners
 
 extends Control
+class_name Banana
 
 # array of scale handle nodes
 @onready var handles = [$TopLeft, $TopRight, $BottomLeft, $BottomRight]
