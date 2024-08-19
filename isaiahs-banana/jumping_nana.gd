@@ -8,7 +8,6 @@ func _ready() -> void:
 	super._ready()
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -17,9 +16,8 @@ func adjust_scale():
 	super.adjust_scale()
 	$Button/JumpingNanaParent.scale = $Button.size*size_ratio
 
-
-func _on_handle_released(button):
-	super._on_handle_released(button)
+func _on_handle_released():
+	super._on_handle_released()
 	run_rand_timer()
 
 func _on_button_button_up():
@@ -32,10 +30,16 @@ func run_rand_timer():
 
 func jump():
 	$Button/JumpingNanaParent/AnimationPlayer.play("banana")
-	#button.position
-	var tween = get_tree().create_tween()
-	tween.tween_property($Button, "position", $Button.position-Vector2(40,0),.6)
-	await tween.finished
+	
+	var jump_distance = Vector2(1,0) * $Button.size * .4
+	var tweeners = []
+	var tween_nodes = [$Button, $TopLeft, $TopRight, $BottomRight, $BottomLeft]
+	
+	for i in tween_nodes.size():
+		tweeners.append(get_tree().create_tween())
+		tweeners[i].tween_property(tween_nodes[i], "position", tween_nodes[i].position-jump_distance,.6).set_trans(Tween.TRANS_CUBIC)
+	
+	await tweeners[0].finished
 	run_rand_timer()
 
 func _on_jump_timer_timeout() -> void:
