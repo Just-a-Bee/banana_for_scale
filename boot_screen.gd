@@ -1,3 +1,6 @@
+# Script for intro boot screen
+# Plays an animation by displaying a bunch of text
+
 extends Control
 
 @onready var title = $PanelContainer/VBoxContainer/Title
@@ -7,6 +10,7 @@ extends Control
 func _ready():
 	show_text()
 
+# function to show all of the text for the animation
 func show_text():
 	while title.visible_ratio < 1:
 		title.visible_characters += 1
