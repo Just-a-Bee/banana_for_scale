@@ -1,0 +1,186 @@
+[gd_scene load_steps=8 format=3 uid="uid://s5kbyvclb6y5"]
+
+[ext_resource type="Script" path="res://isaiahs-banana/jumping_nana.gd" id="1_6dlrk"]
+[ext_resource type="Texture2D" uid="uid://dw28vhrkapqid" path="res://isaiahs-banana/purepng.com-bananafruitsyellowfruit-981524754290imrx9-3346633592.png" id="1_lhpoh"]
+[ext_resource type="Texture2D" uid="uid://7q8016jcvonw" path="res://icon.svg" id="2_luw8h"]
+[ext_resource type="Script" path="res://handle.gd" id="4_vo2gj"]
+
+[sub_resource type="Animation" id="Animation_v0mq4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(123, 243)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.159418]
+}
+
+[sub_resource type="Animation" id="Animation_rqmac"]
+resource_name = "banana"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.133333, 0.233333, 0.333333, 0.433333, 0.466667, 0.566667, 0.666667, 0.733333, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(123, 243), Vector2(123, 243), Vector2(82, 294), Vector2(20, 368), Vector2(-17, 399), Vector2(-29, 421), Vector2(-19, 421), Vector2(-18.9999, 440), Vector2(0.999985, 457), Vector2(99, 379), Vector2(209, 173), Vector2(123, 243)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.133333, 0.233333, 0.333333, 0.466667, 0.566667, 0.666667, 0.733333, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -0.067841, -0.221511, -0.481635, -0.585302, -0.676701, -0.441181, -0.212563, 0.136131, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.166667, 0.333333, 0.466667, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.159418, 0.222912, 0.225814, 0.231933, -0.298887, -0.401967, 0.111788, 0.159418]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gccg3"]
+_data = {
+"RESET": SubResource("Animation_v0mq4"),
+"banana": SubResource("Animation_rqmac")
+}
+
+[node name="Banana" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6dlrk")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+flat = true
+
+[node name="JumpingNanaParent" type="Node2D" parent="Button"]
+
+[node name="Polygon2D" type="Polygon2D" parent="Button/JumpingNanaParent"]
+position = Vector2(0, 20.04)
+rotation = -0.000570356
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_lhpoh")
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(158.448, 16.1449, 76.0553, -17.8143, 2.56984, 46.2071, 28.1784, 240.498, -26.379, 412.521, 29.2918, 596.791, 154.751, 745.233, 420.857, 869.935, 704.778, 881.069, 963.09, 817.048, 1154.04, 704.593, 1255.36, 543.704, 1279.86, 378.919, 1188, 292.629, 1072.76, 338.279, 918.554, 410.651, 783.83, 465.209, 675.272, 477.456, 541.106, 459.085, 432.548, 408.424, 385.784, 374.465, 299.495, 323.805, 231.02, 235.845, 125.423, 238.451, 139.34, 405.463, 206.702, 524.598, 299.471, 585.394, 474.834, 654.983, 676.362, 671.127, 838.364, 637.168, 981.438, 557.559, 1137.87, 454.011)
+uv = PackedVector2Array(158.448, 16.1449, 76.0553, -17.8143, 2.56984, 46.2071, 28.1784, 240.498, -26.379, 412.521, 29.2918, 596.791, 154.751, 745.233, 420.857, 869.935, 704.778, 881.069, 963.09, 817.048, 1154.04, 704.593, 1255.36, 543.704, 1279.86, 378.919, 1188, 292.629, 1072.76, 338.279, 918.554, 410.651, 783.83, 465.209, 675.272, 477.456, 541.106, 459.085, 432.548, 408.424, 385.784, 374.465, 299.495, 323.805, 231.02, 235.845, 125.423, 238.451, 139.34, 405.463, 206.702, 524.598, 299.471, 585.394, 474.834, 654.983, 676.362, 671.127, 838.364, 637.168, 981.438, 557.559, 1137.87, 454.011)
+polygons = [PackedInt32Array(2, 3, 22, 0, 1), PackedInt32Array(3, 4, 24, 21, 22, 23), PackedInt32Array(4, 5, 25, 20, 21, 24), PackedInt32Array(5, 6, 26, 19, 20, 25), PackedInt32Array(6, 26, 19, 18, 27, 7), PackedInt32Array(7, 27, 18, 17, 28, 8), PackedInt32Array(8, 28, 17, 16, 29, 9), PackedInt32Array(9, 29, 16, 15, 30, 10), PackedInt32Array(10, 30, 15, 14, 31, 11), PackedInt32Array(11, 31, 14, 13, 12)]
+bones = ["Bone2D", PackedFloat32Array(1, 1, 1, 1, 1, 1, 0.75, 0.42, 0.21, 0.09, 0, 0, 0, 0, 0, 0, 0.09, 0.21, 0.42, 0.75, 1, 1, 1, 1, 1, 1, 0.75, 0.42, 0.21, 0.09, 0, 0), "Bone2D/Bone2D2", PackedFloat32Array(0, 0, 0, 0, 0, 0.11, 0.36, 0.32, 0.59, 0.82, 1, 1, 1, 1, 1, 1, 0.82, 0.59, 0.39, 0.36, 0.11, 0, 0, 0, 0, 0.11, 0.36, 0.39, 0.59, 0.82, 1, 1), "Bone2D/Bone2D2/Bone2D3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+internal_vertex_count = 9
+
+[node name="Skeleton2D" type="Skeleton2D" parent="Button/JumpingNanaParent"]
+scale = Vector2(0.1, 0.1)
+
+[node name="Bone2D" type="Bone2D" parent="Button/JumpingNanaParent/Skeleton2D"]
+position = Vector2(123, 243)
+rest = Transform2D(1, 0, 0, 1, 123, 243)
+
+[node name="Bone2D2" type="Bone2D" parent="Button/JumpingNanaParent/Skeleton2D/Bone2D"]
+position = Vector2(510, 458)
+rotation = 0.159418
+rest = Transform2D(1, 0, 0, 1, 510, 458)
+
+[node name="Bone2D3" type="Bone2D" parent="Button/JumpingNanaParent/Skeleton2D/Bone2D/Bone2D2"]
+position = Vector2(522, -255)
+rest = Transform2D(1, 0, 0, 1, 522, -255)
+
+[node name="Icon" type="Sprite2D" parent="Button/JumpingNanaParent/Skeleton2D"]
+visible = false
+position = Vector2(680, 1230)
+scale = Vector2(14.6339, 3.0492)
+texture = ExtResource("2_luw8h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Button/JumpingNanaParent"]
+root_node = NodePath("../Skeleton2D/Bone2D/Bone2D2")
+libraries = {
+"": SubResource("AnimationLibrary_gccg3")
+}
+
+[node name="JumpTimer" type="Timer" parent="Button/JumpingNanaParent"]
+one_shot = true
+
+[node name="TopLeft" type="Button" parent="." node_paths=PackedStringArray("share_x", "share_y")]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("4_vo2gj")
+share_x = NodePath("../BottomLeft")
+share_y = NodePath("../TopRight")
+
+[node name="TopRight" type="Button" parent="." node_paths=PackedStringArray("share_x", "share_y")]
+offset_left = 120.0
+offset_top = -8.0
+offset_right = 136.0
+offset_bottom = 8.0
+script = ExtResource("4_vo2gj")
+share_x = NodePath("../BottomRight")
+share_y = NodePath("../TopLeft")
+
+[node name="BottomRight" type="Button" parent="." node_paths=PackedStringArray("share_x", "share_y")]
+offset_left = 120.0
+offset_top = 120.0
+offset_right = 136.0
+offset_bottom = 136.0
+script = ExtResource("4_vo2gj")
+share_x = NodePath("../TopRight")
+share_y = NodePath("../BottomLeft")
+
+[node name="BottomLeft" type="Button" parent="." node_paths=PackedStringArray("share_x", "share_y")]
+offset_left = -8.0
+offset_top = 120.0
+offset_right = 8.0
+offset_bottom = 136.0
+script = ExtResource("4_vo2gj")
+share_x = NodePath("../TopLeft")
+share_y = NodePath("../BottomRight")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="timeout" from="Button/JumpingNanaParent/JumpTimer" to="." method="_on_jump_timer_timeout"]
