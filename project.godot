@@ -18,3 +18,4 @@ config/icon="res://icon.svg"
 [autoload]
 
 Pictures="*res://pictures.gd"
+Score="*res://score.gd"

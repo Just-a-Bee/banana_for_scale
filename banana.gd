@@ -4,6 +4,13 @@
 extends Control
 class_name Banana
 
+var texture_array = [
+	preload("res://assets/bananas/banana.png"),
+	preload("res://assets/bananas/banana2.png"),
+	preload("res://assets/bananas/banana3.png"),
+	preload("res://assets/bananas/banana4.png")
+						]
+
 # array of scale handle nodes
 @onready var handles = [$TopLeft, $TopRight, $BottomLeft, $BottomRight]
 
@@ -21,6 +28,8 @@ var prev_mouse_pos = Vector2.ZERO
 
 # on ready connect signals
 func _ready():
+	if $Button is TextureButton:
+		$Button.texture_normal = texture_array.pick_random()
 	for i in handles:
 		i.button_down.connect(_on_handle_clicked.bind(i))
 		i.button_up.connect(_on_handle_released)
@@ -44,6 +53,9 @@ func _on_handle_clicked(handle):
 	else:
 		min_handle_pos.y = draghandle.share_x.position.y + MINIMUM_SIZE.y
 		max_handle_pos.y = get_viewport().size.y
+	
+	print(min_handle_pos)
+	print(max_handle_pos)
 	
 
 # when a handle is released, stop dragging it

@@ -3,13 +3,24 @@
 
 class_name Picture
 
+
+const PERFECT_TOLERANCE:float = 5
+const OK_TOLERANCE:float = 10
+
 var texture:Texture2D = preload("res://icon.svg")
-var banana_size:Vector2 = Vector2.ZERO
-var tolerance:float = 1
+var banana_size:float = 1
 
 # constructor function sets each variable
-func _init(t:Texture2D, s:Vector2, tol:float):
+func _init(t:Texture2D, s:float):
 	texture = t
 	banana_size = s
-	tolerance = tol
+
+func score(size:float):
+	var error = abs(size - banana_size)
+	if error < PERFECT_TOLERANCE:
+		Score.increment(Score.SCORES.PERFECT)
+	elif error < OK_TOLERANCE:
+		Score.increment(Score.SCORES.GOOD)
+	else:
+		Score.increment(Score.SCORES.BAD)
 	
