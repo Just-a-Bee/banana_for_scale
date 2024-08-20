@@ -4,9 +4,9 @@ const GOOD_SCORE = 16
 const MID_SCORE = 10
 
 @onready var score_counts = [
-	$PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Count,
-	$PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Count,
-	$PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer3/Count]
+	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Count,
+	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Count,
+	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/Count]
 
 func _ready():
 	score_animate()
@@ -26,7 +26,7 @@ func score_animate():
 	var shown_score = 0
 	while shown_score < Score.total_score:
 		shown_score += 1
-		$PanelContainer/VBoxContainer/TotalScore.text = "Score: " + str(shown_score)
+		$PanelContainer/MarginContainer/VBoxContainer/TotalScore.text = "Score: " + str(shown_score)
 		await get_tree().create_timer(.1).timeout
 	if Score.total_score > GOOD_SCORE:
 		$Good.play()

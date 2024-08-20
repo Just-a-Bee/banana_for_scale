@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4ky4gi6v3rwc"]
+[gd_scene load_steps=9 format=3 uid="uid://c4ky4gi6v3rwc"]
 
 [ext_resource type="Texture2D" uid="uid://dyj1uybkuaxvy" path="res://assets/ui/icons/banana_icon.png" id="1_4nfni"]
 [ext_resource type="Script" path="res://ui/end_screen.gd" id="1_f5uas"]
 [ext_resource type="Texture2D" uid="uid://cxgfy1pk2qnxl" path="res://assets/ui/icons/check_icon.png" id="3_848tv"]
 [ext_resource type="Texture2D" uid="uid://cmhwksjnucue8" path="res://assets/ui/icons/x_icon.png" id="4_kaqip"]
+[ext_resource type="AudioStream" uid="uid://cl77udqekgxd0" path="res://assets/audio/voice/ending-intro.ogg" id="5_wfqo0"]
+[ext_resource type="AudioStream" uid="uid://ix1sf2ne703f" path="res://assets/audio/voice/good-ending.ogg" id="6_jd5sn"]
+[ext_resource type="AudioStream" uid="uid://m58naps7715k" path="res://assets/audio/voice/mid-ending.ogg" id="7_65oin"]
+[ext_resource type="AudioStream" uid="uid://ceide52dnlarl" path="res://assets/audio/voice/bad-ending.ogg" id="8_bpgcp"]
 
 [node name="EndScreen" type="Control"]
 layout_mode = 3
@@ -122,9 +126,13 @@ text = "[font_size=40]		Banana For Scale
 fit_content = true
 
 [node name="Exit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wfqo0")
 
 [node name="Good" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_jd5sn")
 
 [node name="Mid" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_65oin")
 
 [node name="Bad" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_bpgcp")
