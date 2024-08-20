@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-var BAR_MAX = 160
+var BAR_MAX = 140
 
 func _ready():
 	Score.score_changed.connect(update_graph)

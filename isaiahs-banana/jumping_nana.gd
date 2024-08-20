@@ -29,6 +29,8 @@ func run_rand_timer():
 	$Button/JumpingNanaParent/JumpTimer.start(time)
 
 func jump():
+	dragging = false
+	draghandle = null
 	$Button/JumpingNanaParent/AnimationPlayer.play("banana")
 	
 	var jump_distance = Vector2(1,0) * $Button.size * .4

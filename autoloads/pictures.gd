@@ -9,7 +9,11 @@ var picture_arr:Array[Picture] = [
 	Picture.new(preload("res://assets/pictures/still_life.jpg"), 237),
 	Picture.new(preload("res://assets/pictures/table.jpg"), 46),
 	Picture.new(preload("res://assets/pictures/shelf.jpg"), 271),
-	Picture.new(preload("res://assets/pictures/biggabo.jpg"), 592),
+	Picture.new(preload("res://assets/pictures/orange_cat.jpg"), 128),
+	Picture.new(preload("res://assets/pictures/tabby_cat.jpg"), 376),
+	Picture.new(preload("res://assets/pictures/nerd.jpg"), 208),
+	Picture.new(preload("res://assets/pictures/helmet.jpg"), 216),
+	Picture.new(preload("res://assets/pictures/shoes.jpg"), 240),
 	Picture.new(preload("res://assets/pictures/vase.jpg"), 375)
 ]
 

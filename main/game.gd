@@ -14,6 +14,7 @@ var banana:Banana
 
 @onready var event_array:Array = [
 	#preload("res://assets/audio/voice/tutorial.ogg"),
+	"bad_banana",
 	Pictures.tutorial_picture,
 	Pictures.get_picture(),
 	Pictures.get_picture(),
@@ -31,6 +32,22 @@ func _ready():
 	add_child(banana)
 	banana.move(BANANA_START_POS)
 	next_event()
+
+# update time in the corner
+func _process(_delta):
+	var time = Time.get_time_dict_from_system()
+	
+	var minute_string = str(time["minute"])
+	if time["minute"] < 10:
+		minute_string = "0" + minute_string
+	
+	var am_pm = " AM"
+	if time["hour"] > 12:
+		time["hour"] = time["hour"] - 12
+		am_pm = " PM"
+	
+	var str = str(time["hour"]) + ":" + minute_string + am_pm
+	$GamePanel/VBoxContainer/TopBar/HBoxContainer/Time.text = str
 
 # Function to display the next picture for banana scaling
 func next_event():

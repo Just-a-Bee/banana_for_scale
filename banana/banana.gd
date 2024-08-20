@@ -7,7 +7,6 @@ class_name Banana
 var texture_array = [
 	preload("res://assets/bananas/banana.png"),
 	preload("res://assets/bananas/banana2.png"),
-	preload("res://assets/bananas/banana3.png"),
 	preload("res://assets/bananas/banana4.png")
 						]
 
