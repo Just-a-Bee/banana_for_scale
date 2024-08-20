@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4ky4gi6v3rwc"]
+[gd_scene load_steps=13 format=3 uid="uid://c4ky4gi6v3rwc"]
 
 [ext_resource type="Texture2D" uid="uid://dyj1uybkuaxvy" path="res://assets/ui/icons/banana_icon.png" id="1_4nfni"]
 [ext_resource type="Script" path="res://ui/end_screen.gd" id="1_f5uas"]
@@ -9,6 +9,17 @@
 [ext_resource type="AudioStream" uid="uid://m58naps7715k" path="res://assets/audio/voice/mid-ending.ogg" id="7_65oin"]
 [ext_resource type="AudioStream" uid="uid://ceide52dnlarl" path="res://assets/audio/voice/bad-ending.ogg" id="8_bpgcp"]
 [ext_resource type="AudioStream" uid="uid://1183eqvubm48" path="res://assets/audio/sfx/score-tally-noise.wav" id="9_7itbe"]
+
+[sub_resource type="Gradient" id="Gradient_drjb2"]
+colors = PackedColorArray(0.027451, 0.0313726, 0.105882, 1, 0.0431373, 0.0941176, 0.211765, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y6sga"]
+gradient = SubResource("Gradient_drjb2")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jfmtq"]
+texture = SubResource("GradientTexture2D_y6sga")
 
 [node name="EndScreen" type="Control"]
 layout_mode = 3
@@ -23,6 +34,7 @@ script = ExtResource("1_f5uas")
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_jfmtq")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -117,10 +129,11 @@ horizontal_alignment = 1
 [node name="Label" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 bbcode_enabled = true
-text = "[font_size=40]		Banana For Scale
-						- A game by Abby Smith and Isaiah Sugar
-						- Voice acting by Ariana Fernandez
-						- Thank You For Playing!
+text = "[font_size=40][center]
+Banana For Scale
+A game by Abby Smith and Isaiah Sugar
+Voice acting by Ariana Fernandez
+Thank You For Playing!
 
 
 "
