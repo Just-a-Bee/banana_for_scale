@@ -72,7 +72,7 @@ func next_event():
 		next_event()
 	elif event == "end":
 		$GamePanel/VBoxContainer/MarginContainer/VBoxContainer/BottomBar/Button.disabled = true
-		await get_tree().create_timer(.4).timeout
+		await get_tree().create_timer(1.8).timeout
 		get_tree().change_scene_to_file("res://ui/end_screen.tscn")
 
 

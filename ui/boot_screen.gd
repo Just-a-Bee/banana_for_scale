@@ -22,14 +22,14 @@ func show_text():
 	
 	while left_column.visible_ratio < 1:
 		left_column.visible_characters += 1
-		await get_tree().create_timer(.005).timeout
+		await get_tree().create_timer(.001).timeout
 		
 		if left_column.text[left_column.visible_characters-1] == "\n":
-			await get_tree().create_timer(.1).timeout
+			await get_tree().create_timer(.03).timeout
 			var right_line_finished = false
 			while not right_line_finished:
 				right_column.visible_characters += 1
-				await get_tree().create_timer(.005).timeout
+				await get_tree().create_timer(.001).timeout
 				if right_column.text[right_column.visible_characters] == "\n":
 					right_line_finished = true
 	$Boot.hide()
