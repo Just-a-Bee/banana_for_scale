@@ -1,14 +1,22 @@
-[gd_scene load_steps=13 format=3 uid="uid://chfq7u8brt5jy"]
+[gd_scene load_steps=16 format=3 uid="uid://chfq7u8brt5jy"]
 
-[ext_resource type="Texture2D" uid="uid://3xo2scl20lnf" path="res://assets/ui/banana_bg.png" id="1_63ykv"]
-[ext_resource type="Script" path="res://main/game.gd" id="1_slv2d"]
-[ext_resource type="PackedScene" uid="uid://ctqssw563fls0" path="res://banana/banana.tscn" id="2_ijnkj"]
-[ext_resource type="Script" path="res://ui/bar_graph.gd" id="3_u2not"]
-[ext_resource type="Texture2D" uid="uid://dyj1uybkuaxvy" path="res://assets/ui/icons/banana_icon.png" id="4_vuuwc"]
-[ext_resource type="Texture2D" uid="uid://cxgfy1pk2qnxl" path="res://assets/ui/icons/check_icon.png" id="5_516ek"]
-[ext_resource type="Texture2D" uid="uid://cmhwksjnucue8" path="res://assets/ui/icons/x_icon.png" id="6_d2mj8"]
+[ext_resource type="Script" path="res://main/game.gd" id="1_a6xjo"]
+[ext_resource type="Texture2D" uid="uid://3xo2scl20lnf" path="res://assets/ui/banana_bg.png" id="2_3kupl"]
+[ext_resource type="Texture2D" uid="uid://blom1m8idbvos" path="res://assets/ui/banana_logo.png" id="2_uavgk"]
+[ext_resource type="Script" path="res://ui/bar_graph.gd" id="3_ctc7k"]
+[ext_resource type="Texture2D" uid="uid://5gn0cquoy1ek" path="res://assets/ui/power_logo.png" id="3_vm7rl"]
+[ext_resource type="Texture2D" uid="uid://dyj1uybkuaxvy" path="res://assets/ui/icons/banana_icon.png" id="4_t413w"]
+[ext_resource type="Texture2D" uid="uid://cxgfy1pk2qnxl" path="res://assets/ui/icons/check_icon.png" id="5_w6egs"]
+[ext_resource type="Texture2D" uid="uid://cmhwksjnucue8" path="res://assets/ui/icons/x_icon.png" id="6_scer8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3fp0"]
+bg_color = Color(0.980392, 0.886275, 0.309804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p71f1"]
+bg_color = Color(1, 0.992157, 0.764706, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ggkvo"]
+color = Color(0, 0, 0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yudxl"]
 bg_color = Color(0.921569, 0.792157, 0.301961, 1)
@@ -20,12 +28,12 @@ bg_color = Color(0.258824, 0.607843, 0.278431, 1)
 bg_color = Color(0.658824, 0.0470588, 0.0470588, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhasl"]
-bg_color = Color(0.360784, 0.360784, 0.360784, 1)
+bg_color = Color(0.372549, 0.372549, 0.372549, 1)
 
 [node name="Game" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_slv2d")
+script = ExtResource("1_a6xjo")
 
 [node name="GamePanel" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -33,133 +41,180 @@ offset_right = 1152.0
 offset_bottom = 648.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_d3fp0")
 
-[node name="MarginContainer" type="MarginContainer" parent="GamePanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GamePanel"]
 layout_mode = 2
+
+[node name="TopBar" type="PanelContainer" parent="GamePanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p71f1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GamePanel/VBoxContainer/TopBar"]
+layout_mode = 2
+
+[node name="VSeparator3" type="VSeparator" parent="GamePanel/VBoxContainer/TopBar/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_ggkvo")
+
+[node name="TextureRect" type="TextureRect" parent="GamePanel/VBoxContainer/TopBar/HBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("2_uavgk")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="GamePanel/VBoxContainer/TopBar/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "   File       Edit       View       Help"
+
+[node name="Label2" type="Label" parent="GamePanel/VBoxContainer/TopBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "5:33 PM "
+horizontal_alignment = 2
+
+[node name="VSeparator4" type="VSeparator" parent="GamePanel/VBoxContainer/TopBar/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_ggkvo")
+
+[node name="TextureRect2" type="TextureRect" parent="GamePanel/VBoxContainer/TopBar/HBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("3_vm7rl")
+expand_mode = 2
+
+[node name="VSeparator5" type="VSeparator" parent="GamePanel/VBoxContainer/TopBar/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_ggkvo")
+
+[node name="MarginContainer" type="MarginContainer" parent="GamePanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GamePanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GamePanel/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="TopBar" type="HBoxContainer" parent="GamePanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.07
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GamePanel/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SideBar" type="VBoxContainer" parent="GamePanel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="SideBar" type="VBoxContainer" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
 
-[node name="BananaBG" type="TextureRect" parent="GamePanel/MarginContainer/VBoxContainer/HBoxContainer/SideBar"]
+[node name="BananaBG" type="TextureRect" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SideBar"]
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("1_63ykv")
+texture = ExtResource("2_3kupl")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="BarGraph" type="VBoxContainer" parent="GamePanel/MarginContainer/VBoxContainer/HBoxContainer/SideBar"]
+[node name="BarGraph" type="VBoxContainer" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SideBar"]
 layout_mode = 2
 size_flags_vertical = 3
-script = ExtResource("3_u2not")
+script = ExtResource("3_ctc7k")
 
-[node name="Perfect" type="HBoxContainer" parent="GamePanel/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph"]
+[node name="Perfect" type="HBoxContainer" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph"]
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="GamePanel/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph/Perfect"]
+[node name="Icon" type="TextureRect" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph/Perfect"]
 layout_mode = 2
-texture = ExtResource("4_vuuwc")
+texture = ExtResource("4_t413w")
 expand_mode = 2
 
-[node name="Bar" type="Panel" parent="GamePanel/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph/Perfect"]
+[node name="Bar" type="Panel" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph/Perfect"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yudxl")
 
-[node name="Count" type="Label" parent="GamePanel/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph/Perfect"]
+[node name="Count" type="Label" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph/Perfect"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "0"
 horizontal_alignment = 2
 
-[node name="Good" type="HBoxContainer" parent="GamePanel/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph"]
+[node name="Good" type="HBoxContainer" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph"]
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="GamePanel/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph/Good"]
+[node name="Icon" type="TextureRect" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph/Good"]
 layout_mode = 2
-texture = ExtResource("5_516ek")
+texture = ExtResource("5_w6egs")
 expand_mode = 2
 
-[node name="Bar" type="Panel" parent="GamePanel/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph/Good"]
+[node name="Bar" type="Panel" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph/Good"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kqgly")
 
-[node name="Count" type="Label" parent="GamePanel/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph/Good"]
+[node name="Count" type="Label" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph/Good"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "0"
 horizontal_alignment = 2
 
-[node name="Bad" type="HBoxContainer" parent="GamePanel/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph"]
+[node name="Bad" type="HBoxContainer" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph"]
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="GamePanel/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph/Bad"]
+[node name="Icon" type="TextureRect" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph/Bad"]
 layout_mode = 2
-texture = ExtResource("6_d2mj8")
+texture = ExtResource("6_scer8")
 expand_mode = 2
 
-[node name="Bar" type="Panel" parent="GamePanel/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph/Bad"]
+[node name="Bar" type="Panel" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph/Bad"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cojv1")
 
-[node name="Count" type="Label" parent="GamePanel/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph/Bad"]
+[node name="Count" type="Label" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SideBar/BarGraph/Bad"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "0"
 horizontal_alignment = 2
 
-[node name="PicturePanel" type="PanelContainer" parent="GamePanel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="PicturePanel" type="PanelContainer" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_mhasl")
 
-[node name="MarginContainer" type="MarginContainer" parent="GamePanel/MarginContainer/VBoxContainer/HBoxContainer/PicturePanel"]
+[node name="MarginContainer" type="MarginContainer" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PicturePanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="PictureRect" type="TextureRect" parent="GamePanel/MarginContainer/VBoxContainer/HBoxContainer/PicturePanel/MarginContainer"]
+[node name="PictureRect" type="TextureRect" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PicturePanel/MarginContainer"]
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="BottomBar" type="HBoxContainer" parent="GamePanel/MarginContainer/VBoxContainer"]
+[node name="BottomBar" type="HBoxContainer" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 alignment = 1
 
-[node name="Button" type="Button" parent="GamePanel/MarginContainer/VBoxContainer/BottomBar"]
+[node name="Button" type="Button" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/BottomBar"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Banana Scaled!!"
 
-[node name="Banana" parent="." instance=ExtResource("2_ijnkj")]
-layout_mode = 2
-offset_left = 48.0
-offset_top = 96.0
-offset_right = 176.0
-offset_bottom = 224.0
+[node name="Dialogue" type="AudioStreamPlayer" parent="."]
 
-[connection signal="button_up" from="GamePanel/MarginContainer/VBoxContainer/BottomBar/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/BottomBar/Button" to="." method="_on_button_button_up"]
