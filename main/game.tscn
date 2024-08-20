@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://chfq7u8brt5jy"]
+[gd_scene load_steps=22 format=3 uid="uid://chfq7u8brt5jy"]
 
 [ext_resource type="Script" path="res://main/game.gd" id="1_a6xjo"]
 [ext_resource type="Texture2D" uid="uid://3xo2scl20lnf" path="res://assets/ui/banana_bg.png" id="2_3kupl"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dyj1uybkuaxvy" path="res://assets/ui/icons/banana_icon.png" id="4_t413w"]
 [ext_resource type="Texture2D" uid="uid://cxgfy1pk2qnxl" path="res://assets/ui/icons/check_icon.png" id="5_w6egs"]
 [ext_resource type="Texture2D" uid="uid://cmhwksjnucue8" path="res://assets/ui/icons/x_icon.png" id="6_scer8"]
+[ext_resource type="AudioStream" uid="uid://o33oyxemf1ic" path="res://assets/audio/music/banana game music.ogg" id="9_n5g5n"]
 
 [sub_resource type="Gradient" id="Gradient_d85hs"]
 offsets = PackedFloat32Array(0.729508, 1)
@@ -286,5 +287,11 @@ offset_bottom = 772.0
 theme_override_font_sizes/font_size = 90
 text = "PERFECT"
 horizontal_alignment = 1
+
+[node name="Sfx" type="AudioStreamPlayer" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_n5g5n")
+volume_db = -7.0
 
 [connection signal="button_up" from="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/BottomBar/Button" to="." method="_on_button_button_up"]

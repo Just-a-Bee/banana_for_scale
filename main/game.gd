@@ -32,6 +32,7 @@ func _ready():
 	add_child(banana)
 	banana.move(BANANA_START_POS)
 	next_event()
+	$Music.playing = true
 
 # update time in the corner
 func _process(_delta):
