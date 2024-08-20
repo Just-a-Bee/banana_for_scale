@@ -4,8 +4,8 @@
 class_name Picture
 
 
-const PERFECT_TOLERANCE:float = 5
-const OK_TOLERANCE:float = 10
+var perfect_tolerance:float = 5
+var ok_tolerance:float = 10
 
 var texture:Texture2D = preload("res://icon.svg")
 var banana_size:float = 1
@@ -14,13 +14,19 @@ var banana_size:float = 1
 func _init(t:Texture2D, s:float):
 	texture = t
 	banana_size = s
+	perfect_tolerance = .05*banana_size
+	ok_tolerance = .15 * banana_size + 5
+	print(perfect_tolerance, " ", ok_tolerance)
 
 func score(size:float):
 	var error = abs(size - banana_size)
-	if error < PERFECT_TOLERANCE:
+	if error < perfect_tolerance:
 		Score.increment(Score.SCORES.PERFECT)
-	elif error < OK_TOLERANCE:
+		return Score.SCORES.PERFECT
+	elif error < ok_tolerance:
 		Score.increment(Score.SCORES.GOOD)
+		return Score.SCORES.GOOD
 	else:
 		Score.increment(Score.SCORES.BAD)
+		return Score.SCORES.BAD
 	
