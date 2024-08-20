@@ -71,16 +71,20 @@ func next_event():
 		spawn_banana(true)
 		next_event()
 	elif event == "end":
+		$GamePanel/VBoxContainer/MarginContainer/VBoxContainer/BottomBar/Button.disabled = true
+		await get_tree().create_timer(.4).timeout
 		get_tree().change_scene_to_file("res://ui/end_screen.tscn")
 
 
 func play_dialogue():
 	$Dialogue.play()
 	$Music.volume_db = -20
+	$GamePanel/VBoxContainer/MarginContainer/VBoxContainer/BottomBar/Button.disabled = true
 	await $Dialogue.finished
+	$GamePanel/VBoxContainer/MarginContainer/VBoxContainer/BottomBar/Button.disabled = false
 	$Music.volume_db = -7
 	
-	
+
 func _on_button_button_up():
 	score_banana()
 	$AnimationPlayer.play("show_score")

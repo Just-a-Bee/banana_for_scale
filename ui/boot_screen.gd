@@ -34,7 +34,7 @@ func show_text():
 					right_line_finished = true
 	$Boot.hide()
 	$Loading.show()
-	
+	$AudioStreamPlayer2.play()
 	for i in 2:
 		$Loading/RichTextLabel.visible_characters = 16
 		await get_tree().create_timer(.3).timeout
