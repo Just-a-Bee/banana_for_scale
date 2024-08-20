@@ -3,13 +3,14 @@
 
 extends Control
 
-@onready var title = $PanelContainer/VBoxContainer/Title
-@onready var left_column = $PanelContainer/VBoxContainer/HBoxContainer/LeftColumn
-@onready var right_column = $PanelContainer/VBoxContainer/HBoxContainer/RightColumn
+@onready var title = $Boot/VBoxContainer/Title
+@onready var left_column = $Boot/VBoxContainer/HBoxContainer/LeftColumn
+@onready var right_column = $Boot/VBoxContainer/HBoxContainer/RightColumn
 
 func _ready():
 	show_text()
-
+	$Loading/Loadingnana/AnimationPlayer.play("load")
+	
 # function to show all of the text for the animation
 func show_text():
 	while title.visible_ratio < 1:
@@ -31,4 +32,14 @@ func show_text():
 				await get_tree().create_timer(.01).timeout
 				if right_column.text[right_column.visible_characters] == "\n":
 					right_line_finished = true
+	$Boot.hide()
+	$Loading.show()
+	
+	for i in 3:
+		$Loading/RichTextLabel.visible_characters = 16
+		await get_tree().create_timer(.3).timeout
+		$Loading/RichTextLabel.visible_characters = 17
+		await get_tree().create_timer(.3).timeout
+		$Loading/RichTextLabel.visible_characters = 18
+		await get_tree().create_timer(.3).timeout
 	get_tree().change_scene_to_file("res://main/game.tscn")

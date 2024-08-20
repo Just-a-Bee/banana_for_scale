@@ -120,14 +120,14 @@ expand_mode = 2
 [node name="Label" type="Label" parent="GamePanel/VBoxContainer/TopBar/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "   File       Edit       View       Help"
 
 [node name="Time" type="Label" parent="GamePanel/VBoxContainer/TopBar/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "5:33 PM "
 horizontal_alignment = 2
 
@@ -179,14 +179,17 @@ size_flags_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jd67s")
 
 [node name="BarGraph" type="VBoxContainer" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SideBar/PanelContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 3
+alignment = 1
 script = ExtResource("3_ctc7k")
 
 [node name="Perfect" type="HBoxContainer" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SideBar/PanelContainer/BarGraph"]
 layout_mode = 2
 
 [node name="Icon" type="TextureRect" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SideBar/PanelContainer/BarGraph/Perfect"]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("4_t413w")
 expand_mode = 2

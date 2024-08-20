@@ -5,7 +5,8 @@ extends Node
 
 signal score_changed
 
-var score_array:Array[int] = [0,0,0]
+var score_array:Array[int] = [4,2,1]
+var total_score = 15
 
 enum SCORES {
 	BAD = 0,
@@ -16,5 +17,6 @@ enum SCORES {
 # function to increment the score at a given index
 func increment(index):
 	score_array[index] += 1
+	total_score += index
 	score_changed.emit()
 
