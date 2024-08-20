@@ -1,5 +1,8 @@
 extends Control
 
+const GOOD_SCORE = 16
+const MID_SCORE = 10
+
 @onready var score_counts = [
 	$PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Count,
 	$PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Count,
@@ -9,7 +12,8 @@ func _ready():
 	score_animate()
 
 func score_animate():
-	await get_tree().create_timer(2).timeout
+	$Exit.play()
+	await $Exit.finished
 	for i in score_counts:
 		var score_array = Score.score_array
 		score_array.reverse()
@@ -24,3 +28,9 @@ func score_animate():
 		shown_score += 1
 		$PanelContainer/VBoxContainer/TotalScore.text = "Score: " + str(shown_score)
 		await get_tree().create_timer(.1).timeout
+	if Score.total_score > GOOD_SCORE:
+		$Good.play()
+	elif Score.total_score > MID_SCORE:
+		$Mid.play()
+	else:
+		$Bad.play()

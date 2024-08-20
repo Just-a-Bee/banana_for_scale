@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Pictures="*res://autoloads/pictures.gd"
 Score="*res://autoloads/score.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [gui]
 
 theme/custom_font="res://assets/128k-mac.otf"

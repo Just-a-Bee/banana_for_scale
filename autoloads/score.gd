@@ -5,8 +5,8 @@ extends Node
 
 signal score_changed
 
-var score_array:Array[int] = [4,2,1]
-var total_score = 15
+var score_array:Array[int] = [0,0,0]
+var total_score = 0
 
 enum SCORES {
 	BAD = 0,

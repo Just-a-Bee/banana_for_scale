@@ -120,3 +120,11 @@ text = "[font_size=40]		Banana For Scale
 
 "
 fit_content = true
+
+[node name="Exit" type="AudioStreamPlayer" parent="."]
+
+[node name="Good" type="AudioStreamPlayer" parent="."]
+
+[node name="Mid" type="AudioStreamPlayer" parent="."]
+
+[node name="Bad" type="AudioStreamPlayer" parent="."]

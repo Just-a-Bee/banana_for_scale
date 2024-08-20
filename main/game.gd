@@ -13,8 +13,7 @@ var bad_banana_packed = preload("res://isaiahs-banana/jumping nana.tscn")
 var banana:Banana
 
 @onready var event_array:Array = [
-	#preload("res://assets/audio/voice/tutorial.ogg"),
-	"bad_banana",
+	preload("res://assets/audio/voice/tutorial.ogg"),
 	Pictures.tutorial_picture,
 	Pictures.get_picture(),
 	Pictures.get_picture(),
@@ -22,7 +21,12 @@ var banana:Banana
 	"bad_banana",
 	Pictures.get_picture(),
 	Pictures.get_picture(),
-	#preload("res://assets/audio/voice/going_under.ogg"),
+	Pictures.get_picture(),
+	Pictures.get_picture(),
+	"bad_banana",
+	Pictures.get_picture(),
+	Pictures.get_picture(),
+	preload("res://assets/audio/voice/going_under.ogg"),
 	Pictures.final_picture,
 	"end"
 ]
