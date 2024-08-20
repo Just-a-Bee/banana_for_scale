@@ -31,4 +31,4 @@ func show_text():
 				await get_tree().create_timer(.01).timeout
 				if right_column.text[right_column.visible_characters] == "\n":
 					right_line_finished = true
-	get_tree().change_scene_to_file("res://game.tscn")
+	get_tree().change_scene_to_file("res://main/game.tscn")
