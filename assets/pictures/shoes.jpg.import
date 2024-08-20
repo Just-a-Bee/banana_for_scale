@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqdl4c1b3f7mx"
-path="res://.godot/imported/biggabo.jpg-43b784d80ae5de798998dac38e3715a7.ctex"
+uid="uid://yt7uh21feayl"
+path="res://.godot/imported/shoes.jpg-ad82f44074079d90dccbb1899fb818f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pictures/biggabo.jpg"
-dest_files=["res://.godot/imported/biggabo.jpg-43b784d80ae5de798998dac38e3715a7.ctex"]
+source_file="res://assets/pictures/shoes.jpg"
+dest_files=["res://.godot/imported/shoes.jpg-ad82f44074079d90dccbb1899fb818f2.ctex"]
 
 [params]
 
