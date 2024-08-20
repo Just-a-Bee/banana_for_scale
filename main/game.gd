@@ -13,7 +13,7 @@ var bad_banana_packed = preload("res://isaiahs-banana/jumping nana.tscn")
 var banana:Banana
 
 @onready var event_array:Array = [
-	preload("res://assets/audio/voice/tutorial.ogg"),
+	preload("res://assets/audio/voice/intro.ogg"),
 	Pictures.tutorial_picture,
 	Pictures.get_picture(),
 	Pictures.get_picture(),
@@ -26,7 +26,7 @@ var banana:Banana
 	"bad_banana",
 	Pictures.get_picture(),
 	Pictures.get_picture(),
-	preload("res://assets/audio/voice/going_under.ogg"),
+	preload("res://assets/audio/voice/company-going-under.ogg"),
 	Pictures.final_picture,
 	"end"
 ]
@@ -61,7 +61,7 @@ func next_event():
 	var event = event_array.pop_front()
 	if event is AudioStream:
 		$Dialogue.stream = event
-		$Dialogue.play()
+		play_dialogue()
 		next_event()
 	elif event is Picture:
 		current_picture = event
@@ -72,6 +72,14 @@ func next_event():
 		next_event()
 	elif event == "end":
 		get_tree().change_scene_to_file("res://ui/end_screen.tscn")
+
+
+func play_dialogue():
+	$Dialogue.play()
+	$Music.volume_db = -20
+	await $Dialogue.finished
+	$Music.volume_db = -7
+	
 	
 func _on_button_button_up():
 	score_banana()
@@ -96,8 +104,11 @@ func score_banana():
 	var score_string = ""
 	if score == Score.SCORES.BAD:
 		score_string = "BAD"
+		$Bad.play()
 	if score == Score.SCORES.GOOD:
 		score_string = "GOOD"
+		$Good.play()
 	if score == Score.SCORES.PERFECT:
 		score_string = "PERFECT"
+		$Perfect.play()
 	$AnimationPlayer/ScoreText.text = score_string

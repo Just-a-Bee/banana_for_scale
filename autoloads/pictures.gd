@@ -17,7 +17,7 @@ var picture_arr:Array[Picture] = [
 	Picture.new(preload("res://assets/pictures/vase.webp"), 375)
 ]
 
-var final_picture:Picture = Picture.new(preload("res://assets/pictures/coins.webp"), 1)
+var final_picture:Picture = Picture.new(preload("res://assets/pictures/coins.webp"), 352)
 
 # function to return a random picture
 func get_picture()->Picture:

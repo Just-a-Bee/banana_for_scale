@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://chfq7u8brt5jy"]
+[gd_scene load_steps=26 format=3 uid="uid://chfq7u8brt5jy"]
 
 [ext_resource type="Script" path="res://main/game.gd" id="1_a6xjo"]
 [ext_resource type="Texture2D" uid="uid://3xo2scl20lnf" path="res://assets/ui/banana_bg.png" id="2_3kupl"]
@@ -8,7 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://dyj1uybkuaxvy" path="res://assets/ui/icons/banana_icon.png" id="4_t413w"]
 [ext_resource type="Texture2D" uid="uid://cxgfy1pk2qnxl" path="res://assets/ui/icons/check_icon.png" id="5_w6egs"]
 [ext_resource type="Texture2D" uid="uid://cmhwksjnucue8" path="res://assets/ui/icons/x_icon.png" id="6_scer8"]
+[ext_resource type="Texture2D" uid="uid://dr688hvb6e3w8" path="res://assets/pictures/coins.webp" id="9_a7m3s"]
 [ext_resource type="AudioStream" uid="uid://o33oyxemf1ic" path="res://assets/audio/music/banana game music.ogg" id="9_n5g5n"]
+[ext_resource type="AudioStream" uid="uid://cn57ux5rmexia" path="res://assets/audio/sfx/perfect.wav" id="11_lkcw3"]
+[ext_resource type="AudioStream" uid="uid://bv8vr3ucmv4me" path="res://assets/audio/sfx/good.wav" id="12_yafjm"]
+[ext_resource type="AudioStream" uid="uid://cc5sgjhqn0rf" path="res://assets/audio/sfx/bad.wav" id="13_7alda"]
 
 [sub_resource type="Gradient" id="Gradient_d85hs"]
 offsets = PackedFloat32Array(0.729508, 1)
@@ -76,6 +80,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GamePanel/VBoxContainer/MarginContainer/VBoxContainer/BottomBar/Button:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7ysdx"]
@@ -262,6 +278,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="PictureRect" type="TextureRect" parent="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PicturePanel/MarginContainer"]
 layout_mode = 2
+texture = ExtResource("9_a7m3s")
 expand_mode = 1
 stretch_mode = 5
 
@@ -291,10 +308,18 @@ theme_override_font_sizes/font_size = 90
 text = "PERFECT"
 horizontal_alignment = 1
 
-[node name="Sfx" type="AudioStreamPlayer" parent="."]
-
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_n5g5n")
 volume_db = -7.0
+bus = &"Music"
+
+[node name="Perfect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_lkcw3")
+
+[node name="Good" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_yafjm")
+
+[node name="Bad" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_7alda")
 
 [connection signal="button_up" from="GamePanel/VBoxContainer/MarginContainer/VBoxContainer/BottomBar/Button" to="." method="_on_button_button_up"]

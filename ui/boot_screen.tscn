@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwh40sib1xqo2"]
+[gd_scene load_steps=6 format=3 uid="uid://bwh40sib1xqo2"]
 
 [ext_resource type="Script" path="res://ui/boot_screen.gd" id="1_7fu50"]
 [ext_resource type="Texture2D" uid="uid://ppyjp0cnhwlo" path="res://assets/ui/loadingnana.png" id="2_4w40i"]
+[ext_resource type="AudioStream" uid="uid://f1n7fsx5vbga" path="res://assets/audio/sfx/bootup.wav" id="3_xgkcm"]
 
 [sub_resource type="Animation" id="Animation_tmnpp"]
 resource_name = "load"
@@ -207,3 +208,7 @@ texture = ExtResource("2_4w40i")
 libraries = {
 "": SubResource("AnimationLibrary_aq5ke")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xgkcm")
+autoplay = true

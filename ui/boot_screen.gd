@@ -17,25 +17,25 @@ func show_text():
 		title.visible_characters += 1
 		await get_tree().create_timer(.05).timeout
 	
-	await get_tree().create_timer(.5).timeout
+	await get_tree().create_timer(.25).timeout
 	
 	
 	while left_column.visible_ratio < 1:
 		left_column.visible_characters += 1
-		await get_tree().create_timer(.01).timeout
+		await get_tree().create_timer(.005).timeout
 		
 		if left_column.text[left_column.visible_characters-1] == "\n":
-			await get_tree().create_timer(.2).timeout
+			await get_tree().create_timer(.1).timeout
 			var right_line_finished = false
 			while not right_line_finished:
 				right_column.visible_characters += 1
-				await get_tree().create_timer(.01).timeout
+				await get_tree().create_timer(.005).timeout
 				if right_column.text[right_column.visible_characters] == "\n":
 					right_line_finished = true
 	$Boot.hide()
 	$Loading.show()
 	
-	for i in 3:
+	for i in 2:
 		$Loading/RichTextLabel.visible_characters = 16
 		await get_tree().create_timer(.3).timeout
 		$Loading/RichTextLabel.visible_characters = 17
