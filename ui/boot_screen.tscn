@@ -1,6 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwh40sib1xqo2"]
+[gd_scene load_steps=5 format=3 uid="uid://bwh40sib1xqo2"]
 
 [ext_resource type="Script" path="res://ui/boot_screen.gd" id="1_7fu50"]
+[ext_resource type="Texture2D" uid="uid://ppyjp0cnhwlo" path="res://assets/ui/loadingnana.png" id="2_4w40i"]
+
+[sub_resource type="Animation" id="Animation_tmnpp"]
+resource_name = "load"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.14159, 9.42478]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aq5ke"]
+_data = {
+"load": SubResource("Animation_tmnpp")
+}
 
 [node name="BootScreen" type="Control"]
 layout_mode = 3
@@ -12,7 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7fu50")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Boot" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -25,28 +48,29 @@ offset_bottom = -648.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Boot"]
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="Title" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+[node name="Title" type="RichTextLabel" parent="Boot/VBoxContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 bbcode_enabled = true
-text = "[center][font_size=35]BANANA INSTRUMENTS 2002
+text = "[center][font_size=45]BANANA INSTRUMENTS 2002
 "
 fit_content = true
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Boot/VBoxContainer"]
 layout_mode = 2
 
-[node name="LeftColumn" type="RichTextLabel" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="LeftColumn" type="RichTextLabel" parent="Boot/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.5
+theme_override_font_sizes/normal_font_size = 25
 text = "Copyright (c) All rights reserved.
 BNA Kernel Version 1.2.1
 
@@ -96,10 +120,11 @@ fit_content = true
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="RightColumn" type="RichTextLabel" parent="PanelContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(45, 0)
+[node name="RightColumn" type="RichTextLabel" parent="Boot/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 10
+theme_override_font_sizes/normal_font_size = 25
 text = " 
  
  
@@ -154,6 +179,31 @@ autowrap_mode = 0
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="Control" type="Control" parent="PanelContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="Boot/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+
+[node name="Loading" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Loading"]
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center][font_size=80]Loading Bananas..."
+fit_content = true
+visible_characters = 16
+visible_ratio = 0.888889
+
+[node name="Loadingnana" type="Sprite2D" parent="Loading"]
+position = Vector2(576, 240)
+rotation = 9.42478
+texture = ExtResource("2_4w40i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Loading/Loadingnana"]
+libraries = {
+"": SubResource("AnimationLibrary_aq5ke")
+}
