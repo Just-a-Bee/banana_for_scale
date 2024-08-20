@@ -53,8 +53,6 @@ func _on_handle_clicked(handle):
 		min_handle_pos.y = draghandle.share_x.position.y + MINIMUM_SIZE.y
 		max_handle_pos.y = get_viewport().size.y
 	
-	print(min_handle_pos)
-	print(max_handle_pos)
 	
 
 # when a handle is released, stop dragging it
