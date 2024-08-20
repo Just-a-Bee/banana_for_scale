@@ -16,7 +16,6 @@ func _init(t:Texture2D, s:float):
 	banana_size = s
 	perfect_tolerance = .05*banana_size
 	ok_tolerance = .15 * banana_size + 5
-	print(perfect_tolerance, " ", ok_tolerance)
 
 func score(size:float):
 	var error = abs(size - banana_size)
