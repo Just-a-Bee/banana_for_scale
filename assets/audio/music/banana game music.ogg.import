@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://o33oyxemf1ic"
+path="res://.godot/imported/banana game music.ogg-0aa1e88406f8fa7f9483fa4d8e49323b.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/banana game music.ogg"
+dest_files=["res://.godot/imported/banana game music.ogg-0aa1e88406f8fa7f9483fa4d8e49323b.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
