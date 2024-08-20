@@ -7,6 +7,7 @@ const BANANA_START_POS = Vector2(48,96)
 
 var current_picture:Picture = null
 var banana_packed = preload("res://banana/banana.tscn")
+var bad_banana_packed = preload("res://isaiahs-banana/jumping nana.tscn")
 
 @onready var picture_rect = $GamePanel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PicturePanel/MarginContainer/PictureRect
 var banana:Banana
@@ -21,7 +22,7 @@ var banana:Banana
 	Pictures.get_picture(),
 	Pictures.get_picture(),
 	preload("res://assets/audio/voice/going_under.ogg"),
-	Pictures.final_picture,
+	Pictures.final_picture
 ]
 
 func _ready():
@@ -44,7 +45,8 @@ func next_event():
 		picture_rect.texture = current_picture.texture
 		
 	elif event == "bad_banana":
-		pass
+		spawn_banana(true)
+		next_event()
 	
 func _on_button_button_up():
 	score_banana()
@@ -52,10 +54,13 @@ func _on_button_button_up():
 	spawn_banana()
 
 
-func spawn_banana():
+func spawn_banana(bad = false):
 	if banana:
 		banana.queue_free()
-	banana = banana_packed.instantiate()
+	if bad:
+		banana = bad_banana_packed.instantiate()
+	else:
+		banana = banana_packed.instantiate()
 	add_child(banana)
 	banana.move(BANANA_START_POS)
 
