@@ -12,8 +12,8 @@ func _ready():
 	score_animate()
 
 func score_animate():
-	$Exit.play()
-	await $Exit.finished
+	$DialoguePlayer.play("Exit")
+	await $DialoguePlayer.animation_finished
 	$Noise.play()
 	for i in score_counts:
 		var score_array = Score.score_array
@@ -30,8 +30,12 @@ func score_animate():
 		$PanelContainer/MarginContainer/VBoxContainer/TotalScore.text = "Score: " + str(shown_score)
 		await get_tree().create_timer(.1).timeout
 	if Score.total_score >= GOOD_SCORE:
-		$Good.play()
+		$DialoguePlayer.play("Good")
 	elif Score.total_score >= MID_SCORE:
-		$Mid.play()
+		$DialoguePlayer.play("Mid")
 	else:
-		$Bad.play()
+		$DialoguePlayer.play("Bad")
+
+
+func _on_play_again_button_up():
+	get_tree().change_scene_to_file("res://main/game.tscn")

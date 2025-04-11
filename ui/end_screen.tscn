@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4ky4gi6v3rwc"]
+[gd_scene load_steps=18 format=3 uid="uid://c4ky4gi6v3rwc"]
 
 [ext_resource type="Texture2D" uid="uid://dyj1uybkuaxvy" path="res://assets/ui/icons/banana_icon.png" id="1_4nfni"]
 [ext_resource type="Script" path="res://ui/end_screen.gd" id="1_f5uas"]
@@ -20,6 +20,186 @@ fill_to = Vector2(1, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jfmtq"]
 texture = SubResource("GradientTexture2D_y6sga")
+
+[sub_resource type="Animation" id="Animation_v33pf"]
+resource_name = "Bad"
+length = 8.2
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Audio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_bpgcp")
+}],
+"times": PackedFloat32Array(-0.1)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.7, 4.8, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["I can't believe it.", "You drove our company into the ground.", "I should've never hired you.", "Go home!"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 8.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_4qa6w"]
+resource_name = "Exit"
+length = 4.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Audio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_wfqo0")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["It's time for your exit interview!", "Here you can see your final score."]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_021yu"]
+resource_name = "Good"
+length = 10.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Audio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_jd5sn")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.6, 6.5, 6.8, 7.1, 7.5, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["I never thought I'd say this but...      ", "You're one of the best banana scalers we've ever had.", ".", "..", "...", "And also the last one.", "Sorry about that!"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_vievg"]
+resource_name = "Mid"
+length = 6.5
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Audio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_65oin")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 5.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["I mean...", "The company going under wasn't all your fault at least.", "You're still fired."]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rtb1g"]
+_data = {
+"Bad": SubResource("Animation_v33pf"),
+"Exit": SubResource("Animation_4qa6w"),
+"Good": SubResource("Animation_021yu"),
+"Mid": SubResource("Animation_vievg")
+}
 
 [node name="EndScreen" type="Control"]
 layout_mode = 3
@@ -129,27 +309,48 @@ horizontal_alignment = 1
 [node name="Label" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 bbcode_enabled = true
-text = "[font_size=40][center]
-Banana For Scale
+text = "
+
+
+
+
+[font_size=40][center]
+Banana For Scale Inc.
 A game by Abby Smith and Isaiah Sugar
 Voice acting by Ariana Fernandez
 Thank You For Playing!
 
-
 "
 fit_content = true
 
-[node name="Exit" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_wfqo0")
-
-[node name="Good" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_jd5sn")
-
-[node name="Mid" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_65oin")
-
-[node name="Bad" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_bpgcp")
+[node name="PlayAgain" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
+text = "  Play Again  "
 
 [node name="Noise" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_7itbe")
+
+[node name="DialoguePlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("Subtitles")
+libraries = {
+"": SubResource("AnimationLibrary_rtb1g")
+}
+
+[node name="Subtitles" type="PanelContainer" parent="DialoguePlayer"]
+offset_left = 64.0
+offset_top = 320.0
+offset_right = 1088.0
+offset_bottom = 370.0
+
+[node name="Label" type="Label" parent="DialoguePlayer/Subtitles"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "It's time for your exit interview!"
+horizontal_alignment = 1
+
+[node name="Audio" type="AudioStreamPlayer" parent="DialoguePlayer"]
+volume_db = 3.0
+
+[connection signal="button_up" from="PanelContainer/MarginContainer/VBoxContainer/PlayAgain" to="." method="_on_play_again_button_up"]

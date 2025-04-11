@@ -4,6 +4,11 @@
 extends Control
 class_name Banana
 
+var tiny_texture_array = [
+	preload("res://assets/bananas/tiny_banana_1.png"),
+	preload("res://assets/bananas/tiny_banana_2.png")
+]
+
 var texture_array = [
 	preload("res://assets/bananas/banana.png"),
 	preload("res://assets/bananas/banana2.png"),
@@ -15,6 +20,7 @@ var texture_array = [
 
 # minimum size of the banana
 const MINIMUM_SIZE = Vector2(20,20)
+var is_tiny:bool = false
 
 # bool for if banana is currently being dragged
 var dragging:bool = false
@@ -28,7 +34,10 @@ var prev_mouse_pos = Vector2.ZERO
 # on ready connect signals
 func _ready():
 	if $Button is TextureButton:
-		$Button.texture_normal = texture_array.pick_random()
+		if is_tiny:
+			$Button.texture_normal = tiny_texture_array.pick_random()
+		else:
+			$Button.texture_normal = texture_array.pick_random()
 	for i in handles:
 		i.button_down.connect(_on_handle_clicked.bind(i))
 		i.button_up.connect(_on_handle_released)

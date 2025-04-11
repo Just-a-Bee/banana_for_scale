@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://chfq7u8brt5jy"]
+[gd_scene load_steps=31 format=3 uid="uid://chfq7u8brt5jy"]
 
 [ext_resource type="Script" path="res://main/game.gd" id="1_a6xjo"]
 [ext_resource type="Texture2D" uid="uid://3xo2scl20lnf" path="res://assets/ui/banana_bg.png" id="2_3kupl"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cmhwksjnucue8" path="res://assets/ui/icons/x_icon.png" id="6_scer8"]
 [ext_resource type="Texture2D" uid="uid://dr688hvb6e3w8" path="res://assets/pictures/coins.webp" id="9_a7m3s"]
 [ext_resource type="AudioStream" uid="uid://o33oyxemf1ic" path="res://assets/audio/music/banana game music.ogg" id="9_n5g5n"]
+[ext_resource type="AudioStream" uid="uid://dga60neso3rae" path="res://assets/audio/voice/intro.ogg" id="10_ebwhf"]
+[ext_resource type="AudioStream" uid="uid://c7ouwydr6t3ss" path="res://assets/audio/voice/company-going-under.ogg" id="11_kn5jh"]
 [ext_resource type="AudioStream" uid="uid://cn57ux5rmexia" path="res://assets/audio/sfx/perfect.wav" id="11_lkcw3"]
 [ext_resource type="AudioStream" uid="uid://bv8vr3ucmv4me" path="res://assets/audio/sfx/good.wav" id="12_yafjm"]
 [ext_resource type="AudioStream" uid="uid://cc5sgjhqn0rf" path="res://assets/audio/sfx/bad.wav" id="13_7alda"]
@@ -54,6 +56,146 @@ bg_color = Color(0.658824, 0.0470588, 0.0470588, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhasl"]
 bg_color = Color(0.372549, 0.372549, 0.372549, 1)
+
+[sub_resource type="Animation" id="Animation_f40av"]
+resource_name = "going_under"
+length = 17.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialoguePlayer/Dialogue")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("11_kn5jh")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialoguePlayer/Subtitles:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 17),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DialoguePlayer/Subtitles/Label:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6.2, 9.3, 12.8, 15.6, 17),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["Hey... so the picture you're looking at right now is the remaining company funds.", "Yeah we kinda blew it.", "Can you put a banana next to it for our accountant Greg? ", "Also, we're gonna have to let you go after this. ", "You will not be paid.", ""]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GamePanel/VBoxContainer/MarginContainer/VBoxContainer/BottomBar/Button:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 17),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Music:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 17),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-12.0, -7.0]
+}
+
+[sub_resource type="Animation" id="Animation_4j3de"]
+resource_name = "intro"
+length = 32.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialoguePlayer/Subtitles/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3.8, 6.4, 8.9, 10.9, 14, 18, 20.3, 23.2, 25.2, 27.1, 31.1, 32),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "Welcome to Banana For Scale Inc.", "Where accuracy is our number one priority!", "I'm Jane, I'll be your supervisor.", "In front of you, you'll see a banana,", "And an image from our client of ambiguous scale.", "We need you to add a banana of the proper size to this image.", "Just drag and drop the banana into the picture, ", "and use the handles on the corners to scale it.", "Make sure to place it in the foreground,", "next to the subject of the picture. ", "And remember, the average size of a banana is nine inches. ", "Good luck!", ""]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialoguePlayer/Dialogue")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_ebwhf")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DialoguePlayer/Subtitles:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 31.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GamePanel/VBoxContainer/MarginContainer/VBoxContainer/BottomBar/Button:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 32),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Music:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 32),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-12.0, -9.26047]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3hx5r"]
+_data = {
+"going_under": SubResource("Animation_f40av"),
+"intro": SubResource("Animation_4j3de")
+}
 
 [sub_resource type="Animation" id="Animation_x1gsk"]
 resource_name = "show_score"
@@ -293,7 +435,26 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Banana Scaled!!"
 
-[node name="Dialogue" type="AudioStreamPlayer" parent="."]
+[node name="DialoguePlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3hx5r")
+}
+
+[node name="Subtitles" type="PanelContainer" parent="DialoguePlayer"]
+visible = false
+offset_left = 240.0
+offset_top = 470.0
+offset_right = 1144.0
+offset_bottom = 523.0
+
+[node name="Label" type="Label" parent="DialoguePlayer/Subtitles"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Dialogue" type="AudioStreamPlayer" parent="DialoguePlayer"]
+volume_db = 3.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -310,7 +471,7 @@ horizontal_alignment = 1
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_n5g5n")
-volume_db = -7.0
+volume_db = -12.0
 bus = &"Music"
 
 [node name="Perfect" type="AudioStreamPlayer" parent="."]

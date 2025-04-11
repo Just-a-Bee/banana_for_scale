@@ -3,14 +3,6 @@ extends Banana
 @onready var base_size = $Button.size
 @onready var size_ratio = base_scale/base_size
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	super._ready()
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func adjust_scale():
 	super.adjust_scale()
